@@ -1,5 +1,6 @@
 import Process as pro
 import Methods as m
+import cv2
 
 from PIL import (Image, ImageTk)
 from tkinter import (
@@ -21,12 +22,19 @@ colorLightPurple='#E1E1E6'
 colorLightYellow='#f8f8f2'
 colorGreen='#50fa7b'
 
+print(f'NBE: Nº Buracos Esquerda')
+print(f'NBD: Nº Buracos Direita')
+print(f'AE: Áreas Esquerda')
+print(f'AD: Áreas Direita')
+print(f'N: NOTA')
+
 imgtk = 0; panelA = 0; button = 0; cont = 0
 
 def processa():
     return pro.processImage(
         r1,
         r2,
+        r3,
         AllImagens,
         total,
         cont
@@ -266,6 +274,7 @@ total = len(AllImagens) # Quantidade de imagens achadas
 # xi = (x inicial); xf = (x final); yi = (y inicial); yf = (y final)
 r1 = [[17, 390], [527, 1188]] # Coordenadas ROI Esq
 r2 = [[1337, 390], [1917, 1188]] # Coordenadas ROI Dir
+r3 = [[850, 150],[1250, 400]]
 #print("Numero Total de Imagens: " + str(total))
 
 img = -1

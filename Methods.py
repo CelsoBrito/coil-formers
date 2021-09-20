@@ -115,7 +115,6 @@ def linearRegression(ctr, Img, Way):
     return (
         (0, lefty),
         (cols - 1, righty),
-
         npObj
     )
 
