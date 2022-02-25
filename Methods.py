@@ -2,7 +2,7 @@ import cv2 # Biblioteca de interpretação e modificação de imagens
 import numpy as np # Biblioteca de computação cientifica
 import glob # Biblioteca que permite associar todas as imagens
 import math # Biblioteca para cálculos matemáticos
-from scipy.fftpack import fft
+# from scipy.fftpack import fft # Calcula a transformada de fourier
 # import pyodbc
 
 def reduce_image(img, width): # Função para reduzir o tamanho de imagens
@@ -18,8 +18,6 @@ def reduce_image(img, width): # Função para reduzir o tamanho de imagens
     return cv2.resize(img, new_size, interpolation=cv2.INTER_AREA)
 
 def reduce_domain(image, rect): # Função para reduzir o domínio de uma imagem
-    # region = image[rect[0][1]:rect[1][1], rect[0][0]:rect[1][0]].copy()
-    
     black_image = np.zeros(
         shape=image.shape,
         dtype=np.uint8

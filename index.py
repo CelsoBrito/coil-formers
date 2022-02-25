@@ -1,6 +1,6 @@
 import Process as pro
 import Methods as m
-import cv2
+# import cv2 #Usar quando for capiturar imagens pela camera
 
 from PIL import (Image, ImageTk)
 from tkinter import (
@@ -36,7 +36,6 @@ def processa():
         r2,
         r3,
         AllImagens,
-        total,
         cont
     )
 
@@ -253,8 +252,8 @@ def tela(r, img):
         font=helv11,
         command=lambda:getScript()
     ).pack(side=RIGHT, padx=5)
-    
     mainloop()
+
 # -------------------------------------
 # --- ORIGEM DA IMAGEM
 # -------------------------------------
@@ -262,26 +261,23 @@ def tela(r, img):
 # ImgCam = cv2.VideoCapture('rtsp://admin:admin1234@10.45.106.51')
 # ImgWth = int(ImgCam.get(3))
 # ImgHht = int(ImgCam.get(4))
+
 # > BANCO DE DADOS DE IMAGENS:
 AddBDImg = 'ImagensFM/*.png'
-AllImagens = m.importImages(AddBDImg) # Identifica conjunto de imagens em um
-# diretório
+AllImagens = m.importImages(AddBDImg) # Identifica conjunto de imagens em um diretório
 total = len(AllImagens) # Quantidade de imagens achadas
 # -------------------------------------
 # --- DEFININDO AS REGIÕES DE INTERESSE
 # -------------------------------------
 # Variáveis com dados de coordenadas [(xi, yi), (xf, yf)]:
 # xi = (x inicial); xf = (x final); yi = (y inicial); yf = (y final)
-r1 = [[17, 390], [527, 1188]] # Coordenadas ROI Esq
-r2 = [[1337, 390], [1917, 1188]] # Coordenadas ROI Dir
-r3 = [[850, 150],[1250, 400]]
-#print("Numero Total de Imagens: " + str(total))
+r1 = [[850, 150],[1250, 400]]   # Coordenads ROI Central
+r2 = [[17, 390], [527, 1188]] # Coordenadas ROI Esq
+r3 = [[1337, 390], [1917, 1188]] # Coordenadas ROI Dir
 
-img = -1
-
+imgs = -1
 while (cont < total - 1):
     imgs = processa()
-    
     if(imgs != -1):
         break
 
